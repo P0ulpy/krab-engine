@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSharedSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug-VisualStudio" ENABLED="true" GENERATION_DIR="build/Debug-VisualStudio" CONFIG_NAME="Debug" TOOLCHAIN_NAME="Visual Studio" GENERATION_OPTIONS="-G &quot;Visual Studio 16 2019&quot;" />
+      <configuration PROFILE_NAME="Release-VisualStudio" ENABLED="true" GENERATION_DIR="build/Release-VisualStudio" CONFIG_NAME="Release" TOOLCHAIN_NAME="Visual Studio" GENERATION_OPTIONS="-G &quot;Visual Studio 16 2019&quot;" BUILD_OPTIONS="--o2" />
+      <configuration PROFILE_NAME="Debug-Ninja" ENABLED="false" GENERATION_DIR="build/Debug-Ninja" CONFIG_NAME="Debug" GENERATION_OPTIONS="-G Ninja" />
+      <configuration PROFILE_NAME="Release-Ninja" ENABLED="false" GENERATION_DIR="build/Release-Ninja" CONFIG_NAME="Release" GENERATION_OPTIONS="-G Ninja" BUILD_OPTIONS="--o2" />
+    </configurations>
+  </component>
+</project>

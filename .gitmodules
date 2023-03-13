@@ -1,0 +1,6 @@
+[submodule "vcpkg"]
+	path = vcpkg
+	url = https://github.com/microsoft/vcpkg.git
+[submodule "KrabEngine/vendors/mINI"]
+	path = KrabEngine/vendors/mINI
+	url = https://github.com/pulzed/mINI.git
