@@ -18,7 +18,7 @@ namespace KrabEngine::UI
 
         explicit ProgressBarWidget() = default;
 
-        virtual void OnUpdate(Engine::Timestep ts);
+        virtual void OnUpdate(KrabEngine::Timestep ts);
         void OnRender(sf::RenderTarget& renderTarget);
 
         void Init(const sf::Vector2f& position, const sf::Vector2f& size, const sf::Texture& backgroundTexture, const sf::Texture& fillTexture, sf::Vector2f border = {0.5f, 0.5f});

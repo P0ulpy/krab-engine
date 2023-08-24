@@ -6,7 +6,7 @@
 
 namespace KrabEngine::UI {
 
-    void ProgressBarWidget::OnUpdate(Engine::Timestep ts) {
+    void ProgressBarWidget::OnUpdate(KrabEngine::Timestep ts) {
         m_FillSprite.setScale((GetSize().x - m_border.x *2) * (m_Value / m_MaxValue) / m_FillGlobalBounds.x, (GetSize().y - m_border.y*2) / m_FillGlobalBounds.y);
     }
 

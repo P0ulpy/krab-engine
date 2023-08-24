@@ -73,7 +73,7 @@ namespace KrabEngine
         Clear();
     }
 
-    void Scene::AddPhysicsSimulator(Engine::Physics::IPhysicsSimulator *Simulator) {
+    void Scene::AddPhysicsSimulator(KrabEngine::Physics::IPhysicsSimulator *Simulator) {
         auto SimulatorType = Simulator->GetBodyType();
         if (m_PhysicsSimulators.contains(SimulatorType)) {
             throw std::runtime_error("Target physics component types already has a simulator.");
@@ -82,7 +82,7 @@ namespace KrabEngine
         m_PhysicsSimulators.insert({SimulatorType, Simulator});
     }
 
-    void Scene::RemovePhysicsSimulator(Engine::Physics::IPhysicsSimulator *Simulator) {
+    void Scene::RemovePhysicsSimulator(KrabEngine::Physics::IPhysicsSimulator *Simulator) {
         auto SimulatorType = Simulator->GetBodyType();
         if (m_PhysicsSimulators.contains(SimulatorType)) {
             m_PhysicsSimulators.erase(SimulatorType);

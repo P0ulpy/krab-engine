@@ -2,8 +2,7 @@
 // Created by Flo on 26/11/2022.
 //
 
-#ifndef PATHFINDER_ENTITIESREGISTRY_HPP
-#define PATHFINDER_ENTITIESREGISTRY_HPP
+#pragma once
 
 #include <unordered_map>
 #include <map>
@@ -87,5 +86,3 @@ namespace KrabEngine
 } // Engine
 
 #include "EntitiesRegistry.tpp"
-
-#endif //PATHFINDER_ENTITIESREGISTRY_HPP

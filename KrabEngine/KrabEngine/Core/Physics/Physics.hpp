@@ -5,12 +5,12 @@
 #include "../Components/Physics.hpp"
 
 namespace KrabEngine::Physics {
-    using PhysicsPropertiesCombinationType = Engine::Components::Physics::PhysicsPropertiesCombinationType;
+    using PhysicsPropertiesCombinationType = KrabEngine::Components::Physics::PhysicsPropertiesCombinationType;
 
 //    void CreateCollisionsKdTree()
 //    {
 //        std::vector<EntityHandle> ToBeOrdered = {};
-//        for (auto& [handle, component] : GetSystem<Engine::Components::Physics::RigidBody2DdComponent>()->components) {
+//        for (auto& [handle, component] : GetSystem<KrabEngine::Components::Physics::RigidBody2DdComponent>()->components) {
 //            if (!component.HasCollisions)
 //            {
 //                continue;
@@ -19,7 +19,7 @@ namespace KrabEngine::Physics {
 //        }
 //        PhysicsEntityKdTree.CreateKdTree<2, Maths::Point2D<double>, true>(
 //            ToBeOrdered,
-//            [this](EntityHandle handle)->Maths::Point2D<double> { return this->GetSystem<Engine::Components::Transform>()->GetOf(handle)->Pos; }
+//            [this](EntityHandle handle)->Maths::Point2D<double> { return this->GetSystem<KrabEngine::Components::Transform>()->GetOf(handle)->Pos; }
 //        );
 //    }
 
@@ -28,7 +28,7 @@ namespace KrabEngine::Physics {
     public:
         virtual void Simulate(
             const float& DeltaTime,
-            Engine::EntitiesRegistry* EntitiesRegistry
+            KrabEngine::EntitiesRegistry* EntitiesRegistry
         ) = 0;
         virtual RTTI::ClassType* GetBodyType() = 0;
         virtual ~IPhysicsSimulator() = default;
@@ -49,21 +49,21 @@ namespace KrabEngine::Physics {
         {
             RigidBodyComponentT* FirstRigidBody = nullptr;
             RigidBodyComponentT* SecondRigidBody = nullptr;
-            Engine::Components::Transform* FirstTransform = nullptr;
-            Engine::Components::Transform* SecondTransform = nullptr;
+            KrabEngine::Components::Transform* FirstTransform = nullptr;
+            KrabEngine::Components::Transform* SecondTransform = nullptr;
             RigidBodyComponentT::GeometricPointT FirstCenterOfMassAtCollision;
             RigidBodyComponentT::GeometricPointT SecondCenterOfMassAtCollision;
         };
 
         struct CachedEntity {
             RigidBodyComponentT* Body = nullptr;
-            Engine::Components::Transform* Transform = nullptr;
+            KrabEngine::Components::Transform* Transform = nullptr;
         };
 
     public:
         void Simulate(
             const float& DeltaTime,
-            Engine::EntitiesRegistry* EntitiesRegistry
+            KrabEngine::EntitiesRegistry* EntitiesRegistry
         ) override
         {
             auto& Components = EntitiesRegistry->GetSystem<RigidBodyComponentT>()->components;
@@ -414,8 +414,8 @@ namespace KrabEngine::Physics {
             auto RigidBodyA = CachedEntityA.Body->GetRigidBody();
             auto RigidBodyB = CachedEntityB.Body->GetRigidBody();
 
-            auto CastedRigidBodyA = dynamic_cast<const Engine::Components::Physics::IRectangleGeometricRigidBody2D<GeometricType>*>(RigidBodyA);
-            auto CastedRigidBodyB = dynamic_cast<const Engine::Components::Physics::IRectangleGeometricRigidBody2D<GeometricType>*>(RigidBodyB);
+            auto CastedRigidBodyA = dynamic_cast<const KrabEngine::Components::Physics::IRectangleGeometricRigidBody2D<GeometricType>*>(RigidBodyA);
+            auto CastedRigidBodyB = dynamic_cast<const KrabEngine::Components::Physics::IRectangleGeometricRigidBody2D<GeometricType>*>(RigidBodyB);
             auto ShapeA = dynamic_cast<const Maths::IShape*>(RigidBodyA->GetBoundingBox());
             auto ShapeB = dynamic_cast<const Maths::IShape*>(RigidBodyB->GetBoundingBox());
             if (CastedRigidBodyA && CastedRigidBodyB && ShapeA && ShapeB) {
@@ -445,8 +445,8 @@ namespace KrabEngine::Physics {
             auto RigidBodyA = EntityA.Body->GetRigidBody();
             auto RigidBodyB = EntityB.Body->GetRigidBody();
 
-            auto CastedRigidBodyA = dynamic_cast<const Engine::Components::Physics::IRectangleGeometricRigidBody2D<GeometricType>*>(RigidBodyA);
-            auto CastedRigidBodyB = dynamic_cast<const Engine::Components::Physics::IRectangleGeometricRigidBody2D<GeometricType>*>(RigidBodyB);
+            auto CastedRigidBodyA = dynamic_cast<const KrabEngine::Components::Physics::IRectangleGeometricRigidBody2D<GeometricType>*>(RigidBodyA);
+            auto CastedRigidBodyB = dynamic_cast<const KrabEngine::Components::Physics::IRectangleGeometricRigidBody2D<GeometricType>*>(RigidBodyB);
             if (CastedRigidBodyA && CastedRigidBodyB) {
                 return Maths::Collisions::SAP::LikelyToCollide<GeometricType, Dimensions>(
                     Axis,

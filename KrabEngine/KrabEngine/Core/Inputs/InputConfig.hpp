@@ -52,7 +52,7 @@ namespace SignalSystem
             }
 
             if(m_bindingskeys.empty() || m_bindingsmouse.empty() || m_bindingsevents.empty())
-                Engine::Logger::Err("InputConfig path is incorrect");
+                KrabEngine::Logger::Err("InputConfig path is incorrect");
 
             isLoad = true;
             m_path = path;
@@ -63,7 +63,7 @@ namespace SignalSystem
         [[nodiscard]] std::vector<ConfigKey> GetKeyBindingName(const ConfigType& event, const ConfigType& binding) const
         {
             if(!IsLoad())
-                Engine::Logger::Err("InputConfig is not load");
+                KrabEngine::Logger::Err("InputConfig is not load");
 
             std::vector<ConfigKey> names;
 
@@ -85,7 +85,7 @@ namespace SignalSystem
         [[nodiscard]] std::vector<ConfigKey> GetMouseBindingName(const ConfigType& event, const ConfigType& binding) const
         {
             if(!IsLoad())
-                Engine::Logger::Err("InputConfig is not load");
+                KrabEngine::Logger::Err("InputConfig is not load");
 
             std::vector<ConfigKey> names;
 
@@ -125,7 +125,7 @@ namespace SignalSystem
         [[nodiscard]] ConfigKey GetEventBindingName(const ConfigType& event) const
         {
             if(!IsLoad())
-                Engine::Logger::Err("InputConfig is not load");
+                KrabEngine::Logger::Err("InputConfig is not load");
 
             if(m_bindingsevents.empty())
                 return "";
@@ -168,10 +168,10 @@ namespace SignalSystem
         void ChangeValueFile(const ConfigKey& key, const ConfigType& value)
         {
             if(!IsLoad())
-                Engine::Logger::Err("InputConfig is not load");
+                KrabEngine::Logger::Err("InputConfig is not load");
 
             if(m_path.empty())
-                Engine::Logger::Err("InputConfig path is empty");
+                KrabEngine::Logger::Err("InputConfig path is empty");
 
             mINI::INIFile file(m_path);
 
@@ -198,7 +198,7 @@ namespace SignalSystem
             }
             else
             {
-                Engine::Logger::Err("InputConfig Key is not found");
+                KrabEngine::Logger::Err("InputConfig Key is not found");
             }
 
             file.write(ini);

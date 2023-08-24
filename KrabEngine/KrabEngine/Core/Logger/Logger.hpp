@@ -74,17 +74,6 @@ namespace KrabEngine
         static std::map<std::thread::id, std::string> _threadsLabels;
     };
 
-    /*
-    template <> constexpr std::string_view Logger::LogTypeLabel<LogType::LOG_INFO>()      { return { "INFO" }; }
-    template <> constexpr std::string_view Logger::LogTypeLabel<LogType::LOG_WARNING>()   { return { "WARN" }; }
-    template <> constexpr std::string_view Logger::LogTypeLabel<LogType::LOG_ERROR>()     { return { "ERR" }; }
-
-    template <LogType type> static std::ostream& LogTypeColor(std::ostream &s);
-    template <> constexpr std::ostream& Logger::LogTypeColor<LogType::LOG_INFO>(std::ostream &s)      { return ConsoleColor::blue(s); }
-    template <> constexpr std::ostream& Logger::LogTypeColor<LogType::LOG_WARNING>(std::ostream &s)   { return ConsoleColor::yellow(s); }
-    template <> constexpr std::ostream& Logger::LogTypeColor<LogType::LOG_ERROR>(std::ostream &s)     { return ConsoleColor::red(s); }
-*/
-
 } // Engine
 
 #include "Logger.tpp"

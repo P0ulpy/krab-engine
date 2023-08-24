@@ -2,11 +2,10 @@
 // Created by Flo on 26/11/2022.
 //
 
-#ifndef PATHFINDER_TIME_HPP
-#define PATHFINDER_TIME_HPP
+#pragma once
 
 #include "SFML/System/Clock.hpp"
-#include "Base.hpp"
+#include "Core.hpp"
 
 namespace KrabEngine
 {
@@ -31,5 +30,3 @@ namespace KrabEngine
         Timestep s_deltaTime = .0f;
     };
 }
-
-#endif //PATHFINDER_TIME_HPP

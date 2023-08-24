@@ -8,10 +8,10 @@
 #include "../../Maths/Vector.hpp"
 
 namespace KrabEngine::Components {
-    class Transform : public Engine::Component
+    class Transform : public KrabEngine::Component
     {
     public:
-        DECLARE_CLASS_TYPE(Transform, Engine::Component)
+        DECLARE_CLASS_TYPE(Transform, KrabEngine::Component)
 
         using PointT = Maths::Point2D<double>;
         using VectorT = Maths::Vector2D<double>;

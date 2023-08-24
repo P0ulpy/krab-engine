@@ -16,7 +16,7 @@ namespace KrabEngine::UI
 
     void ButtonWidget::OnUpdate(const float &deltaTime)
     {
-        auto mousePos = sf::Vector2f{ sf::Mouse::getPosition(Engine::EngineApplication::Get()->GetWindow()) };
+        auto mousePos = sf::Vector2f{ sf::Mouse::getPosition(KrabEngine::EngineApplication::Get()->GetWindow()) };
 
         if(m_button.getGlobalBounds().contains(mousePos))
         {

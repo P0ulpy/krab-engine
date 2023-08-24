@@ -45,4 +45,4 @@ namespace KrabEngine::UI
         mutable sf::Vector2f m_size { .0f, .0f };
         mutable int m_layoutIndex{ 0 };
     };
-} // Engine::UI
+} // KrabEngine::UI

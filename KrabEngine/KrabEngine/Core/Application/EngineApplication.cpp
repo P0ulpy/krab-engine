@@ -2,14 +2,14 @@
 #include "../Inputs/WindowEvents.hpp"
 #include "../ScenesSystem/ScenesLayer/ScenesLayer.hpp"
 
-Engine::EngineApplication* Engine::EngineApplication::s_Instance = nullptr;
+KrabEngine::EngineApplication* KrabEngine::EngineApplication::s_Instance = nullptr;
 
-Engine::EngineApplication* Engine::EngineApplication::Get()
+KrabEngine::EngineApplication* KrabEngine::EngineApplication::Get()
 {
     return s_Instance;
 }
 
-Engine::EngineApplication::EngineApplication() {
+KrabEngine::EngineApplication::EngineApplication() {
     if(s_Instance)
         throw std::runtime_error("An instance of EngineApplication already exists");
     else
@@ -21,12 +21,12 @@ Engine::EngineApplication::EngineApplication() {
     PushLayer(m_scenesLayer.get());
 }
 
-Engine::EngineApplication::~EngineApplication()
+KrabEngine::EngineApplication::~EngineApplication()
 {
-    Engine::EngineApplication::s_Instance = nullptr;
+    KrabEngine::EngineApplication::s_Instance = nullptr;
 }
 
-void Engine::EngineApplication::PushLayer(Engine::ApplicationLayer *layer)
+void KrabEngine::EngineApplication::PushLayer(KrabEngine::ApplicationLayer *layer)
 {
     if(m_running)
     {
@@ -37,14 +37,14 @@ void Engine::EngineApplication::PushLayer(Engine::ApplicationLayer *layer)
     m_layers.push_back(layer);
 }
 
-void Engine::EngineApplication::RemoveLayer(Engine::ApplicationLayer *layer)
+void KrabEngine::EngineApplication::RemoveLayer(KrabEngine::ApplicationLayer *layer)
 {
     layer->OnDetach();
     Logger::Log("Layer `", layer->GetName(), "` detached");
     m_layers.erase(std::find(m_layers.begin(), m_layers.end(),layer));
 }
 
-void Engine::EngineApplication::Init()
+void KrabEngine::EngineApplication::Init()
 {
     Logger::SetThreadLabel("main");
 
@@ -57,7 +57,7 @@ void Engine::EngineApplication::Init()
     m_initialized = true;
 }
 
-void Engine::EngineApplication::Run()
+void KrabEngine::EngineApplication::Run()
 {
     if(!m_initialized)
     {
@@ -111,12 +111,12 @@ void Engine::EngineApplication::Run()
         {
             sf::sleep(sf::milliseconds((int) (FixedDeltaTime - Elapsed)));
         } else {
-            //Engine::Logger::Warn("Exceeding fixed update time :", Elapsed);
+            //KrabEngine::Logger::Warn("Exceeding fixed update time :", Elapsed);
         }
     }
 }
 
-void Engine::EngineApplication::Stop()
+void KrabEngine::EngineApplication::Stop()
 {
     m_running = false;
     m_window.close();

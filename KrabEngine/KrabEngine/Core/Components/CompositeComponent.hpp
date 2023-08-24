@@ -19,7 +19,7 @@ namespace KrabEngine
     class CompositeComponent : public Component
     {
         // Check if TCompositeBaseClass extends from CompositeComponent<TCompositeBaseClass>
-        //static_assert(std::is_base_of_v<Component, TCompositeBaseClass>, "Invalid TCompositeBaseClass type, a childComponent must be derived from Engine::CompositeComponent<TCompositeBaseClass>");
+        //static_assert(std::is_base_of_v<Component, TCompositeBaseClass>, "Invalid TCompositeBaseClass type, a childComponent must be derived from KrabEngine::CompositeComponent<TCompositeBaseClass>");
 
     public:
         DECLARE_CLASS_TYPE(CompositeComponent<TCompositeBaseClass>, Component)

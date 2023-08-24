@@ -4,6 +4,5 @@
 
 #pragma once
 
-#include <SFML/Graphics/RenderTarget.hpp>
-
-// #define IMGUI_SUPPORT
+#include "Core/Core.hpp"
+#include "RTTI/ClassType.hpp"

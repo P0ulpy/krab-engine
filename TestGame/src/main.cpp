@@ -1,5 +1,3 @@
-#include "main.hpp"
-
 #include <KrabEngine/KrabEngine.hpp>
 
 int main(int argc, char* argv[])

@@ -228,13 +228,13 @@ namespace KrabEngine::Components::Physics
     using RectangleRigidBody2Dd = RectangleRigidBody2D<double, double>;
 
     template <typename GT, typename PT, bool DebugShapes, bool DebugPoints>
-    class RigidBody2DComponent : public Engine::Component
+    class RigidBody2DComponent : public KrabEngine::Component
     {
     public:
-        DECLARE_CLASS_TYPE(RigidBody2DComponent, Engine::Component)
+        DECLARE_CLASS_TYPE(RigidBody2DComponent, KrabEngine::Component)
 
         static constexpr size_t Dimensions = 2;
-        using RequiredComponents = ComponentRequirements<Engine::Components::Transform>;
+        using RequiredComponents = ComponentRequirements<KrabEngine::Components::Transform>;
         using MaterialT = PhysicsMaterial<Dimensions, GT, PT>;
         using GeometricT = GT;
         using PhysicsT = PT;
@@ -270,9 +270,9 @@ namespace KrabEngine::Components::Physics
         {
             auto ActiveCamera = GetScene()->GetActiveCamera();
             auto PixelSize = 1.f;
-            if (dynamic_cast<Engine::Camera::Camera2D<GeometricT>*>(ActiveCamera))
+            if (dynamic_cast<KrabEngine::Camera::Camera2D<GeometricT>*>(ActiveCamera))
             {
-                PixelSize = PixelSize / static_cast<Engine::Camera::Camera2D<GeometricT>*>(ActiveCamera)->PixelCentimeterRatio;
+                PixelSize = PixelSize / static_cast<KrabEngine::Camera::Camera2D<GeometricT>*>(ActiveCamera)->PixelCentimeterRatio;
             }
 
             auto EntityTransform = GetEntityTransform();
@@ -436,7 +436,7 @@ namespace KrabEngine::Components::Physics
         // optimisation
         void SimulateRigidBody(
             const float& StepMs,
-            Engine::Components::Transform* Transform
+            KrabEngine::Components::Transform* Transform
         )
         {
             ComputeRigidBodyPhysicsProperties(
@@ -456,14 +456,14 @@ namespace KrabEngine::Components::Physics
             SimulateRigidBody(StepMs, Transform);
         }
 
-        [[nodiscard]] Engine::Components::Transform* GetEntityTransform()
+        [[nodiscard]] KrabEngine::Components::Transform* GetEntityTransform()
         {
-            return this->GetEntity().template GetComponent<Engine::Components::Transform>();
+            return this->GetEntity().template GetComponent<KrabEngine::Components::Transform>();
         }
 
-        [[nodiscard]] const Engine::Components::Transform* GetEntityTransform() const
+        [[nodiscard]] const KrabEngine::Components::Transform* GetEntityTransform() const
         {
-            return this->GetEntity().template GetComponent<Engine::Components::Transform>();
+            return this->GetEntity().template GetComponent<KrabEngine::Components::Transform>();
         }
 
         void HandleRecomputeCachedProperties(bool Force = false)
@@ -521,7 +521,7 @@ namespace KrabEngine::Components::Physics
 
         void ApplyRigidBodyToEntity(
             const float& StepMs,
-            Engine::Components::Transform* EntityTransform,
+            KrabEngine::Components::Transform* EntityTransform,
             IRigidBodyT* RigidBody
         )
         {

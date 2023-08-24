@@ -31,4 +31,4 @@ namespace KrabEngine::UI
         UpdateSize();
         RecomputeSize();
     }
-} // Engine::UI
+} // KrabEngine::UI

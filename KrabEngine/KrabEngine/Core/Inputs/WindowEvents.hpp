@@ -2,8 +2,7 @@
 // Created by Flo on 17/01/2023.
 //
 
-#ifndef POPOSIBENGINE_WINDOWEVENTS_HPP
-#define POPOSIBENGINE_WINDOWEVENTS_HPP
+#pragma once
 
 #include "SFML/Graphics.hpp"
 #include "Observable.hpp"
@@ -31,5 +30,3 @@ namespace KrabEngine
     };
 
 } // Engine
-
-#endif //POPOSIBENGINE_WINDOWEVENTS_HPP

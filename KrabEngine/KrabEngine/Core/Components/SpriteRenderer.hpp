@@ -16,12 +16,12 @@ namespace KrabEngine::Components
      * It should be attached to an entity that has a Transform component.
      *
      */
-    class SpriteRenderer : public Engine::Component
+    class SpriteRenderer : public KrabEngine::Component
     {
     public:
         using RequiredComponents = ComponentRequirements<Transform>;
 
-        DECLARE_CLASS_TYPE(SpriteRenderer, Engine::Component)
+        DECLARE_CLASS_TYPE(SpriteRenderer, KrabEngine::Component)
 
         sf::Sprite RenderSprite;
         sf::Texture* Texture = nullptr;

@@ -2,13 +2,13 @@
 // Created by Flo on 15/12/2022.
 //
 
-#ifndef PATHFINDER_ASSETLOADER_HPP
-#define PATHFINDER_ASSETLOADER_HPP
+#pragma once
 
-#include "SFML/Graphics/Texture.hpp"
-#include "SFML/Graphics/Font.hpp"
 #include <unordered_map>
-#include "SFML/Graphics/Font.hpp"
+
+#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/Font.hpp>
 
 namespace KrabEngine {
 
@@ -46,5 +46,3 @@ namespace KrabEngine {
     sf::Font* AssetLoader<sf::Font>::StaticLoadAsset(const std::string& path);
 
 } // Engine
-
-#endif //PATHFINDER_ASSETLOADER_HPP

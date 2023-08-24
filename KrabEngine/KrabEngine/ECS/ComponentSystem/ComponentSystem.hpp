@@ -21,7 +21,7 @@ namespace KrabEngine
     template <class TComponent>
     class ComponentSystem : public IComponentSystem
     {
-        static_assert(std::is_base_of_v<Component, TComponent>, "Invalid TComponent type, a component must be derived from Engine::Component");
+        static_assert(std::is_base_of_v<Component, TComponent>, "Invalid TComponent type, a component must be derived from KrabEngine::Component");
 
     public:
         ~ComponentSystem() override;

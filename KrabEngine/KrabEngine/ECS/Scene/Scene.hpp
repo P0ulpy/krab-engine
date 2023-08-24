@@ -2,8 +2,7 @@
 // Created by Flo on 25/11/2022.
 //
 
-#ifndef PATHFINDER_SCENE_HPP
-#define PATHFINDER_SCENE_HPP
+#pragma once
 
 #include "SFML/Graphics/RenderTarget.hpp"
 
@@ -60,17 +59,17 @@ namespace KrabEngine
 
         void ApplyCleanup();
 
-        inline Engine::Camera::ICamera* GetActiveCamera() { return m_ActiveCamera; }
-        inline void SetActiveCamera(Engine::Camera::ICamera* Camera) { m_ActiveCamera = Camera; }
-        void AddPhysicsSimulator(Engine::Physics::IPhysicsSimulator* Simulator);
-        void RemovePhysicsSimulator(Engine::Physics::IPhysicsSimulator *Simulator);
+        inline KrabEngine::Camera::ICamera* GetActiveCamera() { return m_ActiveCamera; }
+        inline void SetActiveCamera(KrabEngine::Camera::ICamera* Camera) { m_ActiveCamera = Camera; }
+        void AddPhysicsSimulator(KrabEngine::Physics::IPhysicsSimulator* Simulator);
+        void RemovePhysicsSimulator(KrabEngine::Physics::IPhysicsSimulator *Simulator);
 
         // @todo maybe not pertinent
         EntitiesRegistry* GetRegistry() {return &m_registry;}
     private:
         EntitiesRegistry m_registry = EntitiesRegistry(this);
-        Engine::Camera::ICamera* m_ActiveCamera = nullptr;
-        std::unordered_map<RTTI::ClassType*, Engine::Physics::IPhysicsSimulator*> m_PhysicsSimulators;
+        KrabEngine::Camera::ICamera* m_ActiveCamera = nullptr;
+        std::unordered_map<RTTI::ClassType*, KrabEngine::Physics::IPhysicsSimulator*> m_PhysicsSimulators;
     };
 
     // Scene
@@ -144,5 +143,3 @@ namespace KrabEngine
     }
 
 } // Engine
-
-#endif //PATHFINDER_SCENE_HPP

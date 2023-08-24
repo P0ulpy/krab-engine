@@ -2,8 +2,7 @@
 // Created by Flo on 30/01/2023.
 //
 
-#ifndef POPOSIBENGINE_ENTITY_HPP
-#define POPOSIBENGINE_ENTITY_HPP
+#pragma once
 
 #include "../Handles/Handles.hpp"
 
@@ -57,5 +56,3 @@ namespace KrabEngine
     };
 
 } // Engine
-
-#endif //POPOSIBENGINE_ENTITY_HPP

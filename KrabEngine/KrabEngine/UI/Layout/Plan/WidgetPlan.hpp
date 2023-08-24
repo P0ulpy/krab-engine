@@ -15,8 +15,8 @@ namespace KrabEngine::UI
         DECLARE_CLASS_TYPE(WidgetPlan, Widget)
 
         void Init(const sf::Vector2f& position = {0, 0}, const sf::Vector2f& size = {
-                static_cast<float>(Engine::EngineApplication::Get()->GetWindow().getSize().x),
-                static_cast<float>(Engine::EngineApplication::Get()->GetWindow().getSize().y)
+                static_cast<float>(KrabEngine::EngineApplication::Get()->GetWindow().getSize().x),
+                static_cast<float>(KrabEngine::EngineApplication::Get()->GetWindow().getSize().y)
         }
         )
         {

@@ -2,8 +2,7 @@
 // Created by Flo on 26/11/2022.
 //
 
-#ifndef PATHFINDER_APPLICATIONLAYER_HPP
-#define PATHFINDER_APPLICATIONLAYER_HPP
+#pragma once
 
 #include "../Time.hpp"
 
@@ -26,5 +25,3 @@ namespace KrabEngine
     };
 
 } // Engine
-
-#endif //PATHFINDER_APPLICATIONLAYER_HPP

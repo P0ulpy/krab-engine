@@ -57,8 +57,8 @@ namespace KrabEngine::UI
         {
             SetPosition({0.f, 0.f});
             SetSize({
-                static_cast<float>(Engine::EngineApplication::Get()->GetWindow().getSize().x),
-                static_cast<float>(Engine::EngineApplication::Get()->GetWindow().getSize().y)
+                static_cast<float>(KrabEngine::EngineApplication::Get()->GetWindow().getSize().x),
+                static_cast<float>(KrabEngine::EngineApplication::Get()->GetWindow().getSize().y)
             });
         }
 

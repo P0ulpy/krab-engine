@@ -6,14 +6,16 @@
 #include "../../Maths/Vector.hpp"
 #include "../../UI/Widget/Widget.hpp"
 
-namespace KrabEngine::Camera {
-    class ICamera {
+namespace KrabEngine::Camera
+{
+    class ICamera
+    {
     public:
         virtual void Render(
             sf::RenderTarget& RenderTarget,
             const std::unordered_map<RTTI::ClassType*, IComponentSystem*>& RenderableSystems
         ) = 0;
-        virtual void SetUICanvasSize(Engine::UI::Widget* Widget) const {};
+        virtual void SetUICanvasSize(KrabEngine::UI::Widget* Widget) const {};
         virtual ~ICamera() = default;
     };
 
@@ -25,7 +27,8 @@ namespace KrabEngine::Camera {
     };
 
     template <typename GeometricT>
-    class Camera2D : public ICamera {
+    class Camera2D : public ICamera
+    {
     public:
         Camera2D() = default;
 
@@ -76,7 +79,7 @@ namespace KrabEngine::Camera {
             return m_CurrentSize;
         }
 
-        void SetUICanvasSize(Engine::UI::Widget* Widget) const override
+        void SetUICanvasSize(KrabEngine::UI::Widget* Widget) const override
         {
             Widget->SetSize({(float) m_CurrentSize.GetX(), (float) m_CurrentSize.GetY()});
             Widget->SetPosition({(float) (Position.GetX() - (m_CurrentSize.GetX() / 2)), (float) (Position.GetY() - (m_CurrentSize.GetY() / 2))});

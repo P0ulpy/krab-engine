@@ -2,8 +2,7 @@
 // Created by Flo on 02/12/2022.
 //
 
-#ifndef PATHFINDER_CONSOLECOLOR_HPP
-#define PATHFINDER_CONSOLECOLOR_HPP
+#pragma once
 
 #include <iostream>
 
@@ -125,5 +124,3 @@ namespace ConsoleColor
 }
 
 #endif
-
-#endif //PATHFINDER_CONSOLECOLOR_HPP

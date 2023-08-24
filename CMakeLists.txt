@@ -5,7 +5,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 project(krab-engine)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_FLAGS_RELEASE "-o3")
+# set(CMAKE_CXX_FLAGS_RELEASE "-o3")
 
 add_subdirectory(KrabEngine)
 add_subdirectory(TestGame)
