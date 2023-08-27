@@ -2,9 +2,10 @@
 // Created by Admin on 30/01/2023.
 //
 
-#include "Connection.hpp"
 
 #include <utility>
+
+#include "Connection.hpp"
 #include "InputSignal.hpp"
 
 namespace SignalSystem
@@ -14,24 +15,24 @@ namespace SignalSystem
 
     {}
 
-    ScopedConnectionSignal::ScopedConnectionSignal() {
-
-    }
-
-    ScopedConnectionSignal::ScopedConnectionSignal(ScopedConnectionSignal&& other) {
+    ScopedConnectionSignal::ScopedConnectionSignal(ScopedConnectionSignal&& other) noexcept
+    {
         std::swap(m_connection, other.m_connection);
     }
 
-    ScopedConnectionSignal& ScopedConnectionSignal::operator=(ScopedConnectionSignal&& other) {
+    ScopedConnectionSignal& ScopedConnectionSignal::operator=(ScopedConnectionSignal&& other) noexcept
+    {
         std::swap(m_connection, other.m_connection);
         return *this;
     }
 
-    ScopedConnectionSignal::~ScopedConnectionSignal() {
+    ScopedConnectionSignal::~ScopedConnectionSignal()
+    {
         disconnect();
     }
 
-    void ScopedConnectionSignal::disconnect() const {
+    void ScopedConnectionSignal::disconnect() const
+    {
         if (nullptr != m_connection)
             m_connection->m_signal->Disconnect(m_connection);
 
@@ -52,15 +53,18 @@ namespace SignalSystem
             m_semaphore{}
     {}
 
-    void SlotConnectionSignal::block() {
+    void SlotConnectionSignal::block()
+    {
         m_semaphore.addBlocker();
     }
 
-    void SlotConnectionSignal::unblock() {
+    void SlotConnectionSignal::unblock()
+    {
         m_semaphore.removeBlocker();
     }
 
-    auto SlotConnectionSignal::scopedBlock() {
+    auto SlotConnectionSignal::scopedBlock()
+    {
         struct BlockScoped
         {
             explicit BlockScoped(SlotConnectionSignal& owner) : m_connection(owner)
@@ -76,7 +80,7 @@ namespace SignalSystem
             SlotConnectionSignal& m_connection;
         };
 
-        return BlockScoped{ *this };
+        return BlockScoped { *this };
     }
 }
 

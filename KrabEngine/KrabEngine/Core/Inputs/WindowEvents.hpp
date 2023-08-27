@@ -29,4 +29,4 @@ namespace KrabEngine
         static std::array<sf::Event, sf::Event::Count> s_events;
     };
 
-} // Engine
+} // KrabEngine

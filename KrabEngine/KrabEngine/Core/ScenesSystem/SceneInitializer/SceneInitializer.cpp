@@ -5,4 +5,4 @@
 #include "SceneInitializer.hpp"
 
 namespace KrabEngine {
-} // Engine
+} // KrabEngine

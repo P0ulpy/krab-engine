@@ -67,6 +67,6 @@ namespace KrabEngine
 
         friend class EngineApplication;
     };
-} // Engine
+} // KrabEngine
 
 #include "ScenesSystem.tpp"

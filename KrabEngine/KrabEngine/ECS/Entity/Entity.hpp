@@ -55,4 +55,4 @@ namespace KrabEngine
         Scene* m_scene = nullptr;
     };
 
-} // Engine
+} // KrabEngine

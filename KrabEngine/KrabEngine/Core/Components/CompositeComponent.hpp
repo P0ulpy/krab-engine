@@ -64,4 +64,4 @@ namespace KrabEngine
         child->SetParent(nullptr);
         m_children.erase(std::remove(m_children.begin(), m_children.end(), child), m_children.end());
     }
-} // Engine
+} // KrabEngine

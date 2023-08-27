@@ -28,4 +28,4 @@ namespace KrabEngine::Components {
         }
     };
 
-} // Engine
+} // KrabEngine

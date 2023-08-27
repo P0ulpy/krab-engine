@@ -3,7 +3,7 @@
 //
 
 #include "AssetLoader.hpp"
-#include "../Core/Logger/Logger.hpp"
+#include "../../Core/Logger/Logger.hpp"
 
 namespace KrabEngine
 {
@@ -14,7 +14,7 @@ namespace KrabEngine
         
         if(!texture.loadFromFile(path))
         {
-            //Logger::Err("Failed to load texture from path: ", path);
+            Logger::Err("Failed to load texture from path: ", path);
             return nullptr;
         }
 
@@ -30,7 +30,7 @@ namespace KrabEngine
 
         if(!font.loadFromFile(path))
         {
-            //Logger::Err("Failed to load font from path: ", path);
+            Logger::Err("Failed to load font from path: ", path);
             return nullptr;
         }
 
@@ -38,4 +38,4 @@ namespace KrabEngine
 
         return &s_paths[path];
     }
-} // Engine
+} // KrabEngine

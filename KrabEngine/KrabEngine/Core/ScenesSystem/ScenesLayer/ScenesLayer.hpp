@@ -29,4 +29,4 @@ namespace KrabEngine
         sf::RenderTarget* m_renderTarget = nullptr;
     };
 
-} // Engine
+} // KrabEngine

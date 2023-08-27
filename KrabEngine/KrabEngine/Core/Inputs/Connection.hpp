@@ -38,7 +38,7 @@ namespace SignalSystem
 
         void addBlocker() { m_counter++; }
         void removeBlocker() { --m_counter; }
-        bool isDisabled() const { return m_counter == 0; }
+        [[nodiscard]] bool isDisabled() const { return m_counter == 0; }
 
     private:
         size_t m_counter;
@@ -68,11 +68,11 @@ namespace SignalSystem
 
         using EventType = std::string;
 
-        ScopedConnectionSignal();
+        ScopedConnectionSignal() = default;
         ScopedConnectionSignal(const ScopedConnectionSignal& other) = default;
-        ScopedConnectionSignal(ScopedConnectionSignal&& other);
+        ScopedConnectionSignal(ScopedConnectionSignal&& other) noexcept;
         ScopedConnectionSignal& operator=(const ScopedConnectionSignal& other) = default;
-        ScopedConnectionSignal& operator=(ScopedConnectionSignal&& other);
+        ScopedConnectionSignal& operator=(ScopedConnectionSignal&& other) noexcept;
         ~ScopedConnectionSignal();
 
     private:

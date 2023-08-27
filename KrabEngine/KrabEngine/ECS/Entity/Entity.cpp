@@ -12,4 +12,4 @@ namespace KrabEngine
             , m_scene(scene)
     {}
 
-} // Engine
+} // KrabEngine

@@ -18,4 +18,4 @@ namespace KrabEngine
         virtual void OnUnloaded(Scene* scene) = 0;
     };
 
-} // Engine
+} // KrabEngine

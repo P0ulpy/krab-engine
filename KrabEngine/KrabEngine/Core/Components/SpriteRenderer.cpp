@@ -5,4 +5,4 @@
 #include "SpriteRenderer.hpp"
 
 namespace KrabEngine::Components {
-} // Engine
+} // KrabEngine

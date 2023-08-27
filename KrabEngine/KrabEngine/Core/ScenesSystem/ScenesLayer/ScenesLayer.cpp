@@ -36,4 +36,4 @@ namespace KrabEngine
         m_scenesSystem.GetActiveScene()->RenderScene(*m_renderTarget);
     }
 
-} // Engine
+} // KrabEngine

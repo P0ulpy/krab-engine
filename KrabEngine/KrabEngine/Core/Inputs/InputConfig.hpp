@@ -6,9 +6,9 @@
 
 #include <vector>
 #include <utility>
+#include <mini/ini.h>
 
 #include "Binding.hpp"
-#include "../../Vendor/mINI/ini.hpp"
 #include "../Logger/Logger.hpp"
 
 namespace SignalSystem
@@ -20,16 +20,15 @@ namespace SignalSystem
         static InputConfig* Get()
         {
             static InputConfig m_inputConfig;
-
             return &m_inputConfig;
         }
 
         void LoadConfig(const std::string& path)
         {
             mINI::INIFile file(path);
-
             mINI::INIStructure ini;
             file.read(ini);
+
             auto keys = ini["keys"];
             for (auto& key : keys)
             {

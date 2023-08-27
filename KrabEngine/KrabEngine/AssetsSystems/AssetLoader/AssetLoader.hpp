@@ -8,10 +8,9 @@
 
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Font.hpp>
-#include <SFML/Graphics/Font.hpp>
 
-namespace KrabEngine {
-
+namespace KrabEngine
+{
     template<class TAsset>
     class AssetLoader
     {
@@ -45,4 +44,4 @@ namespace KrabEngine {
     template<>
     sf::Font* AssetLoader<sf::Font>::StaticLoadAsset(const std::string& path);
 
-} // Engine
+} // KrabEngine

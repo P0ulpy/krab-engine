@@ -1,3 +1,4 @@
-set(${GAME_TARGET_NAME}
-        src/main.cpp
+target_sources(${GAME_TARGET_NAME}
+    PUBLIC
+        main.cpp
 )

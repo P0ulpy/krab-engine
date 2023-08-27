@@ -74,6 +74,6 @@ namespace KrabEngine
         static std::map<std::thread::id, std::string> _threadsLabels;
     };
 
-} // Engine
+} // KrabEngine
 
 #include "Logger.tpp"

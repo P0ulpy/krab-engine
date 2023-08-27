@@ -8,4 +8,4 @@ namespace KrabEngine {
     ApplicationLayer::ApplicationLayer(const std::string_view& name)
         : m_name(name)
     {}
-} // Engine
+} // KrabEngine

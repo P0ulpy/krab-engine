@@ -36,7 +36,8 @@ namespace KrabEngine::UI
         }
     }
 
-    void ButtonWidget::OnRender(sf::RenderTarget &renderTarget) {
+    void ButtonWidget::OnRender(sf::RenderTarget &renderTarget)
+    {
         renderTarget.draw(m_button);
     }
 
@@ -46,28 +47,34 @@ namespace KrabEngine::UI
         SetSize(size);
     }
 
-    void ButtonWidget::SetPosition(const sf::Vector2f &position) {
+    void ButtonWidget::SetPosition(const sf::Vector2f &position)
+    {
         Widget::SetPosition(position);
         m_button.setPosition(position);
     }
 
-    void ButtonWidget::SetSize(const sf::Vector2f &size) {
+    void ButtonWidget::SetSize(const sf::Vector2f &size)
+    {
         Widget::SetSize(size);
         m_button.setSize(size);
     }
 
-    void ButtonWidget::SetButtonColor(const sf::Color &color) {
+    void ButtonWidget::SetButtonColor(const sf::Color &color)
+    {
         m_button.setFillColor(color);
     }
 
-    void ButtonWidget::SetOnClick(const ButtonWidget::Callback &onClick) {
+    void ButtonWidget::SetOnClick(const ButtonWidget::Callback &onClick)
+    {
         m_onClick = onClick;
         m_OnClickConnection.~ScopedConnectionSignal();
         m_OnClickConnection = SignalSystem::InputSignal::Get()->connectScoped("click", this, &ButtonWidget::OnClick);
     }
 
-    void ButtonWidget::OnClick() {
-        if(m_isHovered && IsActive()) {
+    void ButtonWidget::OnClick()
+    {
+        if(m_isHovered && IsActive())
+        {
             SetButtonColor(m_clickedColor);
             m_onClick();
         }

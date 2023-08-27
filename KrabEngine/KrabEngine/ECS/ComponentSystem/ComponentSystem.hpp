@@ -48,6 +48,6 @@ namespace KrabEngine
         void DispatchDestroy() override;
     };
 
-} // Engine
+} // KrabEngine
 
 #include "ComponentSystem.tpp"

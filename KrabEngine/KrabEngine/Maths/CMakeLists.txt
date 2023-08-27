@@ -1,0 +1,13 @@
+target_sources(${ENGINE_TARGET_NAME}
+    PUBLIC
+        Shape.hpp
+        Collisions.cpp
+        Graph.cpp
+        Shape.cpp
+        Vector.cpp
+        Collisions.hpp
+        Graph.hpp
+        Angles.cpp
+        Vector.hpp
+        Angles.hpp
+)

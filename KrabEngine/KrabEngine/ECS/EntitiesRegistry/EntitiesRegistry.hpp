@@ -83,6 +83,6 @@ namespace KrabEngine
         Scene* m_Scene = nullptr;
     };
 
-} // Engine
+} // KrabEngine
 
 #include "EntitiesRegistry.tpp"

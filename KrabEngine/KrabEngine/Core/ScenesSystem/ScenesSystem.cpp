@@ -80,4 +80,4 @@ namespace KrabEngine
         m_activeSceneName = {};
     }
 
-} // Engine
+} // KrabEngine

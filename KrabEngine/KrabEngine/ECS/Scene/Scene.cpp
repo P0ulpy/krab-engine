@@ -93,4 +93,4 @@ namespace KrabEngine
     {
         m_registry.ApplyCleanup();
     }
-} // Engine
+} // KrabEngine

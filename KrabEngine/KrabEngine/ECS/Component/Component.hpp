@@ -89,4 +89,4 @@ namespace KrabEngine
         friend class Scene;
     };
 
-} // Engine
+} // KrabEngine

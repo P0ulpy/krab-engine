@@ -24,4 +24,4 @@ namespace KrabEngine
         std::string m_name;
     };
 
-} // Engine
+} // KrabEngine

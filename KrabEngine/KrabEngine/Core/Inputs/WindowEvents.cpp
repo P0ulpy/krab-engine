@@ -79,4 +79,4 @@ namespace KrabEngine
             event.type = sf::Event::Count;
         }
     }
-} // Engine
+} // KrabEngine

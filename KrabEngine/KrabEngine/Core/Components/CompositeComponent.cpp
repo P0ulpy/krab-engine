@@ -5,4 +5,4 @@
 #include "CompositeComponent.hpp"
 
 namespace KrabEngine {
-} // Engine
+} // KrabEngine

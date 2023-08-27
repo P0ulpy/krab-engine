@@ -142,4 +142,4 @@ namespace KrabEngine
         m_scene->RemoveComponentOf<T>(m_handle);
     }
 
-} // Engine
+} // KrabEngine

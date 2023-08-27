@@ -9,7 +9,7 @@ set_target_properties(${ENGINE_TARGET_NAME}
 )
 
 add_subdirectory(KrabEngine)
-# add_subdirectory(vendors)
+add_subdirectory(vendors)
 
 target_link_libraries(${ENGINE_TARGET_NAME}
     PUBLIC sfml-system sfml-network sfml-graphics sfml-window sfml-audio

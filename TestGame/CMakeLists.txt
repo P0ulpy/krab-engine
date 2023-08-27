@@ -2,12 +2,16 @@ set(GAME_TARGET_NAME TestGame)
 
 add_executable(${GAME_TARGET_NAME} "")
 
-include_directories(${CMAKE_SOURCE_DIR}/KrabEngine)
+target_include_directories(${GAME_TARGET_NAME}
+    PUBLIC
+        ${CMAKE_SOURCE_DIR}/KrabEngine
+)
 
 add_subdirectory(src)
 
 target_link_libraries(${GAME_TARGET_NAME}
-        PUBLIC KrabEngine
+    PUBLIC
+        KrabEngine
 )
 
 # Assets and Config copy
