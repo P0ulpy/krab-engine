@@ -4,7 +4,8 @@
 #include <complex>
 #include <iostream>
 
-namespace Maths {
+namespace Maths
+{
     // @todo maybe inherit Vector and Point from std::array
     // @todo replace for loops with constexpr sequences
     template <typename T, size_t Size>
@@ -16,11 +17,15 @@ namespace Maths {
         static_assert(Size >= 2);
 
         template<typename ...VT>
-        explicit Point(VT... Vals) {
+        explicit Point(VT... Vals)
+        {
             Values = {Vals...};
         }
 
         std::array<T, Size> Values;
+
+        T& x = Values[0];
+        T& y = Values[1];
 
         const T& operator[](const int& Index) const
         {
@@ -44,7 +49,7 @@ namespace Maths {
 
         bool operator!=(const Point& Other) const
         {
-            return !(*this == Other);
+            return *this != Other;
         }
 
         Point operator+(const Vector<T, Size>& Other) const;
@@ -100,16 +105,30 @@ namespace Maths {
     }
 
     template <typename T, size_t Size>
+    requires (Size >= 3)
+    struct Point<T, Size> : public Point<T, 2>
+    {
+        using Point<T, 2>::x;
+        using Point<T, 2>::y;
+
+        T& z = this->Values[2];
+    };
+
+    template <typename T, size_t Size>
     struct Vector
     {
         static_assert(Size >= 2);
 
         template<typename ...VT>
-        explicit Vector(VT... Vals) {
-            Values = {Vals...};
+        explicit Vector(VT... Vals)
+        {
+            Values = { Vals... };
         }
 
         std::array<T, Size> Values;
+
+        T& x = Values[0];
+        T& y = Values[1];
 
         const T& operator[](const int& Index) const
         {
@@ -133,7 +152,7 @@ namespace Maths {
 
         bool operator!=(const Vector& Other) const
         {
-            return !(*this == Other);
+            return *this != Other;
         }
 
         T GetSquareLength() const
@@ -172,7 +191,7 @@ namespace Maths {
 
         Vector operator+(const Vector& Other) const
         {
-            Vector newVec;
+            Vector newVec(nullptr, std::array<T, Size>());
             for (size_t i = 0; i < Size; i++)
             {
                 newVec[i] = Values[i] + Other[i];
@@ -191,7 +210,7 @@ namespace Maths {
 
         Vector operator-(const Vector<T, Size>& Other) const
         {
-            Vector newVec;
+            Vector newVec(nullptr, std::array<T, Size>());
             for (size_t i = 0; i < Size; i++)
             {
                 newVec[i] = Values[i] - Other[i];
@@ -210,7 +229,7 @@ namespace Maths {
 
         Vector operator+(const T& Other) const
         {
-            Vector newVec;
+            Vector newVec(nullptr, std::array<T, Size>());
             for (size_t i = 0; i < Size; i++)
             {
                 newVec[i] = Values[i] + Other;
@@ -229,7 +248,7 @@ namespace Maths {
 
         Vector operator-(const T& Other) const
         {
-            Vector newVec;
+            Vector newVec(nullptr, std::array<T, Size>());
             for (size_t i = 0; i < Size; i++)
             {
                 newVec[i] = Values[i] - Other;
@@ -248,7 +267,7 @@ namespace Maths {
 
         Vector operator*(const Vector& Other) const
         {
-            Vector newVec;
+            Vector newVec(nullptr, std::array<T, Size>());
             for (size_t i = 0; i < Size; i++)
             {
                 newVec[i] = Values[i] * Other[i];
@@ -258,7 +277,7 @@ namespace Maths {
 
         Vector operator*(const T& Other) const
         {
-            Vector newVec;
+            Vector newVec(nullptr, std::array<T, Size>());
             for (size_t i = 0; i < Size; i++)
             {
                 newVec[i] = Values[i] * Other;
@@ -306,15 +325,13 @@ namespace Maths {
         Vector operator^(const T& Other) const
         {
             return Vector(
-                Other * Values[1],
-                -Other * Values[0]
-            );
+                    Other * Values[1], std::array<T, Size>());
         }
 
         template <size_t S = Size, std::enable_if_t<(S == 3), bool> = false>
         Vector operator^(const Vector& Other) const
         {
-            Vector newVec;
+            Vector newVec(nullptr, std::array<T, Size>());
             for (size_t i = 0; i < Size; i++)
             {
                 const auto nextIndex = (i + 1) % Size;
@@ -337,7 +354,7 @@ namespace Maths {
                         Values[v] = T(0);
                     }
                     Values[i] = T(1);
-                    CreatedAxes[i] = Vector{Values};
+                    CreatedAxes[i] = Vector{Values, std::array<T, Size>()};
                 }
                 return CreatedAxes;
             }();
@@ -420,18 +437,13 @@ namespace Maths {
     template <typename T, size_t Size>
     Vector<T, Size> Point<T, Size>::GetVectorTo(const Point<T, Size>& Other) const
     {
-        Vector<T, Size> newVec;
+        Vector<T, Size> newVec(nullptr, std::array<T, Size>());
         for (size_t i = 0; i < Size; i++)
         {
             newVec[i] = Other[i] - Values[i];
         }
         return newVec;
     }
-
-    template <typename T>
-    using Point2D = Point<T, 2>;
-    template <typename T>
-    using Vector2D = Vector<T, 2>;
 
     template <typename T, size_t Size, bool IsNormalized = true>
     T ProjectOnUnitVector(const Point<T, Size>& Point, const Vector<T, Size>& UnitVector)
@@ -441,7 +453,7 @@ namespace Maths {
         {
             NormalizedUnitVector = UnitVector.GetNormalized();
         }
-        return (Vector<T, Size>{Point.Values}).Scalar(NormalizedUnitVector);
+        return (Vector<T, Size>{Point.Values, std::array<T, Size>()}).Scalar(NormalizedUnitVector);
     }
 
     template <typename T, size_t Size, bool IsNormalized = true>
@@ -482,15 +494,48 @@ namespace Maths {
     template <typename T, size_t Dimensions>
     Maths::Vector<T, Dimensions> GetNormal(Maths::Vector<T, Dimensions> Edge)
     {
-        Maths::Vector<T, Dimensions> Normal;
+        Maths::Vector<T, Dimensions> Normal(nullptr, std::array<T, Dimensions>());
         if constexpr (Dimensions == 2)
         {
             Normal = Edge ^ -1;
-        } else {
+        } else
+        {
             static const auto UnitAxisVector = Vector<T, Dimensions>::GetUnitVectorOnAxis(0);
             Normal = Normal ^ UnitAxisVector;
         }
+
         Normal.Normalize();
         return Normal;
     }
+
+    template <typename T, size_t Size>
+        requires (Size >= 3)
+    struct Vector<T, Size> : public Vector<T, 2>
+    {
+        using Vector<T, 2>::x;
+        using Vector<T, 2>::y;
+
+        T& z = this->Values[2];
+    };
+
+    template <typename T>
+    using Point2D = Point<T, 2>;
+
+    using Point2Df = Point2D<float>;
+    using Point2Dd = Point2D<double>;
+    using Point2Di = Point2D<int32_t>;
+    using Point2Du = Point2D<uint32_t>;
+
+    template <typename T>
+    using Vector2D = Vector<T, 2>;
+
+    using Vector2Df = Vector2D<float>;
+    using Vector2Dd = Vector2D<double>;
+    using Vector2Di = Vector2D<int32_t>;
+    using Vector2Du = Vector2D<uint32_t>;
+
+    template <typename T>
+    using Point3D = Point<T, 3>;
+    template <typename T>
+    using Vector4D = Vector<T, 3>;
 }
